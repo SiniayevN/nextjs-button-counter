@@ -1,85 +1,150 @@
-/* Global layout */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f6f8fa;
-  color: #222;
+/* Reset + base */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
+body {
+  background-color: #3d3a3a;           /* same dark bg */
+  color: #f4f4f4;                       /* light text */
+  min-height: 100vh;
+}
+
+/* Page layout */
 .main-layout {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  gap: 20px;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
 }
 
-/* Title styles */
+/* Titles */
+.page-title,
+.counter-title {
+  text-align: center;
+  color: #00b8b8;                       /* teal accent */
+}
+
 .page-title {
   font-size: 2rem;
-  color: #1e40af; /* dark blue */
-  margin-bottom: 0;
+  margin-bottom: 12px;
 }
 
 .counter-title {
-  color: #2563eb; /* medium blue */
   font-size: 1.5rem;
+  margin-bottom: 16px;
 }
 
-/* Counter box */
+/* Counter card */
 .counter-container {
-  background-color: #ffffff;
-  border: 2px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 24px 32px;
+  background-color: #2f2c2c;            /* card bg */
+  width: 500px;
+  max-width: 92vw;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #00b8b8;            /* teal border like your project sections */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  width: 300px;
 }
 
 /* Count display */
 .counter-display {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
-  color: #1e3a8a;
-  margin: 12px 0 24px;
+  color: #eaeaea;
+  margin: 10px 0 20px;
 }
 
-/* Buttons */
+/* Buttons row */
 .button-group {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .btn {
-  background-color: #3b82f6; /* blue */
+  background-color: #00b8b8;
   color: white;
+  font-weight: bold;
   border: none;
-  padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  padding: 10px 16px;
+  min-width: 130px;
   transition: background-color 0.2s ease;
 }
 
 .btn:hover {
-  background-color: #2563eb;
+  background-color: #00cccc;
 }
 
 .btn:disabled {
-  background-color: #9ca3af;
+  background-color: #5c5a5a;
+  color: #bbbbbb;
   cursor: not-allowed;
 }
 
-/* Reset button different color */
-.btn.reset {
-  background-color: #f59e0b; /* amber */
+/* Reset button can share style; keep consistent with accent */
+.btn.reset {}
+
+/* Step controls (input + select) */
+.step-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
 }
 
-.btn.reset:hover {
-  background-color: #d97706;
+.step-label {
+  display: block;
+  font-weight: bold;
+  color: #eaeaea;
+}
+
+.step-input,
+.step-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #00b8b8;
+  border-radius: 6px;
+  background-color: #444141;
+  color: #f4f4f4;
+}
+
+.step-input {
+  max-width: 110px;
+  text-align: center;
+}
+
+.step-input:focus,
+.step-select:focus {
+  outline: none;
+  border-color: #00ffff;
+  background-color: #524f4f;
+}
+
+/* Optional: utility spacing if you add any labels elsewhere */
+label {
+  display: block;
+  font-weight: bold;
+  color: #eaeaea;
+  margin-top: 10px;
+}
+
+/* Make buttons easy to tap on small screens */
+@media (max-width: 520px) {
+  .btn {
+    min-width: unset;
+    width: 100%;
+  }
+  .button-group {
+    width: 100%;
+  }
 }
