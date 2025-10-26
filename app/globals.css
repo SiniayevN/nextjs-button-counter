@@ -1,4 +1,3 @@
-/* Reset + base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,51 +6,46 @@
 }
 
 body {
-  background-color: #3d3a3a;           /* same dark bg */
-  color: #f4f4f4;                       /* light text */
-  min-height: 100vh;
-}
-
-/* Page layout */
-.main-layout {
+  background-color: #3d3a3a;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 24px;
+  color: #f4f4f4;
 }
 
-/* Titles */
-.page-title,
-.counter-title {
-  text-align: center;
-  color: #00b8b8;                       /* teal accent */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
 }
 
 .page-title {
+  text-align: center;
+  color: #00b8b8;
   font-size: 2rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.counter-title {
-  font-size: 1.5rem;
-  margin-bottom: 16px;
-}
-
-/* Counter card */
 .counter-container {
-  background-color: #2f2c2c;            /* card bg */
+  background-color: #2f2c2c;
   width: 500px;
-  max-width: 92vw;
+  max-width: 90vw;
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid #00b8b8;            /* teal border like your project sections */
+  border: 1px solid #00b8b8;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
 
-/* Count display */
+.counter-title {
+  color: #00b8b8;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
 .counter-display {
   font-size: 3rem;
   font-weight: bold;
@@ -59,7 +53,6 @@ body {
   margin: 10px 0 20px;
 }
 
-/* Buttons row */
 .button-group {
   display: flex;
   justify-content: center;
@@ -69,7 +62,6 @@ body {
 }
 
 .btn {
-  background-color: #00b8b8;
   color: white;
   font-weight: bold;
   border: none;
@@ -77,10 +69,16 @@ body {
   cursor: pointer;
   padding: 10px 16px;
   min-width: 130px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.btn:hover {
+.btn.increment,
+.btn.decrement {
+  background-color: #00b8b8;
+}
+
+.btn.increment:hover,
+.btn.decrement:hover {
   background-color: #00cccc;
 }
 
@@ -90,10 +88,15 @@ body {
   cursor: not-allowed;
 }
 
-/* Reset button can share style; keep consistent with accent */
-.btn.reset {}
+.btn.reset {
+  background-color: #00cc66;
+}
 
-/* Step controls (input + select) */
+.btn.reset:hover {
+  background-color: #00e67a;
+  transform: scale(1.05);
+}
+
 .step-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -103,14 +106,12 @@ body {
 }
 
 .step-label {
-  display: block;
   font-weight: bold;
   color: #eaeaea;
 }
 
 .step-input,
 .step-select {
-  width: 100%;
   padding: 10px;
   border: 1px solid #00b8b8;
   border-radius: 6px;
@@ -130,21 +131,14 @@ body {
   background-color: #524f4f;
 }
 
-/* Optional: utility spacing if you add any labels elsewhere */
-label {
-  display: block;
-  font-weight: bold;
-  color: #eaeaea;
-  margin-top: 10px;
-}
-
-/* Make buttons easy to tap on small screens */
 @media (max-width: 520px) {
   .btn {
     min-width: unset;
     width: 100%;
   }
-  .button-group {
-    width: 100%;
+
+  .counter-container {
+    width: 90%;
+    padding: 20px;
   }
 }
