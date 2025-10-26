@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 
-export default function Counter({ initialCount = 0, initialStep = 1 }) {
-  // initialize from props, with safe guards
+export default function Counter({
+  initialCount = 0,
+  initialStep = 1,
+  showStep = true,
+  title = "Simple Counter",
+}) {
   const [count, setCount] = useState(() =>
     Math.max(0, Number(initialCount) || 0)
   );
@@ -25,7 +29,7 @@ export default function Counter({ initialCount = 0, initialStep = 1 }) {
 
   return (
     <div className="counter-container">
-      <h2 className="counter-title">Simple Counter</h2>
+      <h2 className="counter-title">{title}</h2>
 
       <p className="counter-display" aria-live="polite" role="status">
         {count}
@@ -43,29 +47,31 @@ export default function Counter({ initialCount = 0, initialStep = 1 }) {
         </button>
       </div>
 
-      <div className="step-row">
-        <label htmlFor="step-input" className="step-label">Step</label>
-        <input
-          id="step-input"
-          type="number"
-          min={1}
-          inputMode="numeric"
-          className="step-input"
-          value={step}
-          onChange={onStepInput}
-        />
-        <select
-          aria-label="Choose step preset"
-          className="step-select"
-          value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
-        >
-          <option value={1}>×1</option>
-          <option value={2}>×2</option>
-          <option value={5}>×5</option>
-          <option value={10}>×10</option>
-        </select>
-      </div>
+      {showStep && (
+        <div className="step-row">
+          <label htmlFor="step-input" className="step-label">Step</label>
+          <input
+            id="step-input"
+            type="number"
+            min={1}
+            inputMode="numeric"
+            className="step-input"
+            value={step}
+            onChange={onStepInput}
+          />
+          <select
+            aria-label="Choose step preset"
+            className="step-select"
+            value={step}
+            onChange={(e) => setStep(Number(e.target.value))}
+          >
+            <option value={1}>×1</option>
+            <option value={2}>×2</option>
+            <option value={5}>×5</option>
+            <option value={10}>×10</option>
+          </select>
+        </div>
+      )}
     </div>
   );
 }

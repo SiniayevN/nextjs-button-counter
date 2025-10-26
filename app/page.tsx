@@ -5,8 +5,8 @@ export default function Page() {
     <main className="main-layout">
       <h1 className="page-title">Next.js Counter</h1>
 
-      <Counter />
-      <Counter initialCount={5} initialStep={2} />
+      <Counter title="Default Counter" showStep={false} />
+      <Counter title="Custom Counter" initialCount={5} initialStep={2} />
     </main>
   );
 }
